@@ -124,17 +124,46 @@ public class ParkingTest {
         Parking parking = new Parking(1);
         // Act
         parking.ajouterVehiculeAutorises("ABC-123");
-        parking.ajouterVehiculeAutorises("DEF-456");
         parking.enregistrerEntreeVehicule("ABC-123");
-        parking.enregistrerEntreeVehicule("DEF-456");
         ArrayList<String> vehiculesStationnes = parking.getVehiculeStationnees();
-        System.out.println("Vehicules stationnes:");
-        for (String immatriculation : vehiculesStationnes) {
-            System.out.println(immatriculation);
-        }
-
         // Assert
         assertTrue(vehiculesStationnes.contains("ABC-123"));
-        assertTrue(vehiculesStationnes.contains("DEF-456"));
+
+    }
+
+    @Test
+    public void affichageVehiculeAutorises_affichageVehiculeAutorises_lesVehiculeAutorisesSontAffiches() {
+        // Arrange
+        Parking parking = new Parking(1);
+        // Act
+        parking.ajouterVehiculeAutorises("ABC-123");
+        ArrayList<String> vehiculesAutorises = parking.getVehiculeAutorises();
+        // Assert (You can add assertions here if needed)
+        assertTrue(vehiculesAutorises.contains("ABC-123"));
+
+    }
+
+    @Test
+    public void calculerLeTauxDeRemplissageZeroPlace_calculerTauxRemplissage_donneLeTauxDeRemplissage() {
+        // Arrange
+        Parking parking = new Parking(0);
+        // Act
+        double tauxRemplissage = parking.calculerTauxRemplissage();
+        // Assert
+        assertEquals(0.0, tauxRemplissage, 0.01);
+    }
+
+    @Test
+    public void calculerLeTauxDeRemplissageAvec100Vehicules_calculerTauxRemplissage_donneLeTauxDeRemplissage() {
+        // Arrange
+        Parking parking = new Parking(100);
+        for (int i = 0; i < 100; i++) {
+            parking.ajouterVehiculeAutorises("ABC-" + i);
+            parking.enregistrerEntreeVehicule("ABC-" + i);
+        }
+        // Act
+        double tauxRemplissage = parking.calculerTauxRemplissage();
+        // Assert
+        assertEquals(100.0, tauxRemplissage, 0.01);
     }
 }

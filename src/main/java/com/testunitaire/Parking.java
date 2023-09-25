@@ -92,4 +92,12 @@ public class Parking {
     public void affichageVehiculeStationnes() {
         vehiculeStationnees.toString();
     }
+
+    public double calculerTauxRemplissage() {
+        if (capaciteMaxParking == 0) {
+            return 0.0;
+        }
+        double tauxRemplissage = (double) getNombreVehiculeStationnes() / capaciteMaxParking * 100.0;
+        return tauxRemplissage;
+    }
 }
