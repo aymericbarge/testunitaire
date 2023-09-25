@@ -80,4 +80,12 @@ public class Parking {
         return vehiculeStationnees.size();
 
     }
+
+    public boolean parkingPlein(int capacite) {
+        if (getNombreVehiculeStationnes() > capacite) {
+            return false;
+        }
+        return true;
+
+    }
 }

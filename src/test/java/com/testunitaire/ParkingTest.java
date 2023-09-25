@@ -96,13 +96,25 @@ public class ParkingTest {
     @Test
     public void rechercheNombreVehiculeStationnes_getNombreVehiculeStationnes_nombreVehiculeStationnes() {
         // Arrange
-        Parking parking = new Parking(2);
+        Parking parking = new Parking(1);
         // Act
         parking.ajouterVehiculeAutorises("ABC-123");
         parking.enregistrerEntreeVehicule("ABC-123");
-        System.out.println(parking.getVehiculeStationnees());
 
         // Assert
         assertEquals(1, parking.getNombreVehiculeStationnes());
+    }
+
+    @Test
+    public void rechercheParkingPlein_parkingPLein_leParkingEstPlein() {
+        // Arrange
+        Parking parking = new Parking(1);
+        // Act
+        parking.ajouterVehiculeAutorises("ABC-123");
+        parking.enregistrerEntreeVehicule("ABC-123");
+        parking.ajouterVehiculeAutorises("DEF-456");
+        parking.enregistrerEntreeVehicule("DEF-456");
+        // Assert
+        assertEquals(false, parking.parkingPlein(1));
     }
 }
