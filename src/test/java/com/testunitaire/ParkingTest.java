@@ -161,8 +161,10 @@ public class ParkingTest {
             parking.ajouterVehiculeAutorises("ABC-" + i);
             parking.enregistrerEntreeVehicule("ABC-" + i);
         }
+        // ArrayList<String> vehiculesAutorises = parking.getVehiculeAutorises();
         // Act
         double tauxRemplissage = parking.calculerTauxRemplissage();
+        // System.out.println(vehiculesAutorises);
         // Assert
         assertEquals(100.0, tauxRemplissage, 0.01);
     }
