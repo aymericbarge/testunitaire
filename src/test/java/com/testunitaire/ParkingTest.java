@@ -69,15 +69,39 @@ public class ParkingTest {
     }
 
     @Test
-    public void voidcontexte_methodeSousTest_resulat() {
+    public void sortieVehiculeAutorises_enregistrerSortieVehiculeAutorises_devraitEtreSortie() {
         // Arrange
         Parking parking = new Parking(1);
         Voiture vehicule = new Voiture("ABC-123");
-
+        parking.enregistrerEntreeVehicule("ABC-123");
         // Act
+        parking.enregistrerSortieVehicule("ABC-123");
+
+        // Assert
+        assertEquals(0, parking.getTailleVehiculeAutorises());
+    }
+
+    @Test
+    public void rechercheVehicule_rechercherVehiculeParking_vehiculeEstTrouver() {
+        // Arrange
+        Parking parking = new Parking(1);
+        // Act
+        parking.ajouterVehiculeAutorises("ABC-123");
         parking.enregistrerEntreeVehicule("ABC-123");
 
         // Assert
-        assertEquals(1, parking.getTailleVehiculeAutorises());
+        assertEquals(true, parking.rechercherVehiculeParking("ABC-123"));
+    }
+
+    @Test
+    public void rechercheNombreVehiculeStationnes_getNombreVehiculeStationnes_nombreVehiculeStationnes() {
+        // Arrange
+        Parking parking = new Parking(2);
+        // Act
+        parking.ajouterVehiculeAutorises("ABC-123");
+        parking.enregistrerEntreeVehicule("ABC-123");
+
+        // Assert
+        assertEquals(0, parking.getNombreVehiculeStationnes());
     }
 }
