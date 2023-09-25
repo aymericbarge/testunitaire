@@ -115,6 +115,26 @@ public class ParkingTest {
         parking.ajouterVehiculeAutorises("DEF-456");
         parking.enregistrerEntreeVehicule("DEF-456");
         // Assert
-        assertEquals(false, parking.parkingPlein(1));
+        assertEquals(false, parking.parkingPlein());
+    }
+
+    @Test
+    public void affichageVehiculeStationnes_affichageVehiculeStationnes_lesVehiculeStationnesSontAffiches() {
+        // Arrange
+        Parking parking = new Parking(1);
+        // Act
+        parking.ajouterVehiculeAutorises("ABC-123");
+        parking.ajouterVehiculeAutorises("DEF-456");
+        parking.enregistrerEntreeVehicule("ABC-123");
+        parking.enregistrerEntreeVehicule("DEF-456");
+        ArrayList<String> vehiculesStationnes = parking.getVehiculeStationnees();
+        System.out.println("Vehicules stationnes:");
+        for (String immatriculation : vehiculesStationnes) {
+            System.out.println(immatriculation);
+        }
+
+        // Assert
+        assertTrue(vehiculesStationnes.contains("ABC-123"));
+        assertTrue(vehiculesStationnes.contains("DEF-456"));
     }
 }

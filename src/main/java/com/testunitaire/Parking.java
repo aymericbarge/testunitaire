@@ -18,13 +18,13 @@ public class Parking {
 
     public Parking() {
 
-    };
+    }
 
     public Parking(int capacite) {
         capaciteMaxParking = capacite;
         vehiculeAutorises = new ArrayList<String>();
         vehiculeStationnees = new ArrayList<String>();
-    };
+    }
 
     public ArrayList<String> getVehiculeAutorises() {
         return vehiculeAutorises;
@@ -81,11 +81,15 @@ public class Parking {
 
     }
 
-    public boolean parkingPlein(int capacite) {
-        if (getNombreVehiculeStationnes() > capacite) {
+    public boolean parkingPlein() {
+        if (getNombreVehiculeStationnes() > capaciteMaxParking) {
             return false;
         }
         return true;
 
+    }
+
+    public void affichageVehiculeStationnes() {
+        vehiculeStationnees.toString();
     }
 }
