@@ -53,8 +53,7 @@ public class Parking {
     }
 
     public boolean enregistrerEntreeVehicule(String immatriculation) {
-        if (!vehiculeAutorises.contains(immatriculation)) {
-            vehiculeAutorises.add(immatriculation);
+        if (vehiculeAutorises.contains(immatriculation)) {
             vehiculeStationnees.add(immatriculation);
             return true;
         }

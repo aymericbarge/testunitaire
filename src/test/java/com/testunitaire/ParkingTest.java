@@ -59,9 +59,9 @@ public class ParkingTest {
     public void vehiculeAutorises_enregistrerEntreeVehicule_devraitEntree() {
         // Arrange
         Parking parking = new Parking(1);
-        Voiture vehicule = new Voiture("ABC-123");
 
         // Act
+        parking.ajouterVehiculeAutorises("ABC-123");
         parking.enregistrerEntreeVehicule("ABC-123");
 
         // Assert
@@ -100,8 +100,9 @@ public class ParkingTest {
         // Act
         parking.ajouterVehiculeAutorises("ABC-123");
         parking.enregistrerEntreeVehicule("ABC-123");
+        System.out.println(parking.getVehiculeStationnees());
 
         // Assert
-        assertEquals(0, parking.getNombreVehiculeStationnes());
+        assertEquals(1, parking.getNombreVehiculeStationnes());
     }
 }
